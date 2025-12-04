@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sorteador de Frases</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background: #f2f2f2;
+}
+button {
+padding: 12px 24px;
+font-size: 18px;
+cursor: pointer;
+border-radius: 8px;
+border: none;
+background: #333;
+color: #fff;
+}
+#resultado {
+margin-top: 20px;
+font-size: 24px;
+font-weight: bold;
+}
+</style>
+</head>
+<body>
+<button onclick="sortear()">Sortear Frase</button>
+<div id="resultado"></div>
+
+
+<script>
+const frases = [
+"frase1",
+"frase2",
+"frase3",
+"frase4",
+"frase5",
+"frase6"
+];
+
+
+function sortear() {
+const indice = Math.floor(Math.random() * frases.length);
+document.getElementById("resultado").textContent = frases[indice];
+}
+</script>
+</body>
+</html>
