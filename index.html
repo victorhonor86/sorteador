@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sorteador de Frases</title>
-<style>
-body {
-font-family: Arial, sans-serif;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-height: 100vh;
-background: #f2f2f2;
-}
-button {
-padding: 12px 24px;
-font-size: 18px;
-cursor: pointer;
-border-radius: 8px;
-border: none;
-background: #333;
-color: #fff;
-}
-#resultado {
-margin-top: 20px;
-font-size: 24px;
-font-weight: bold;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SoundBoard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="images/aula_midi.png">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
 </head>
 <body>
-<button onclick="sortear()">Clique para Sortear</button>
+
+    <h2>Sorteio com Som</h2>
+
+    
+
+<button onclick="tocarESortear()"><img src="images/piao.gif"></button>
+
 <div id="resultado"></div>
 
+<audio id="som" src="sounds/piao.mp3"></audio>
 
 <script>
+
 const frases = [
 "Dance uma Música",
 "Passe a Vez",
@@ -47,11 +41,31 @@ const frases = [
 "Escolha um amigo para beber"
 ];
 
+    function tocarESortear() {
+        const audio = document.getElementById("som");
+        
+        // Toca o som
+        audio.currentTime = 0;
+        audio.play();
 
-function sortear() {
-const indice = Math.floor(Math.random() * frases.length);
-document.getElementById("resultado").textContent = frases[indice];
-}
+        // Para o som após 3 segundos
+        setTimeout(() => {
+            audio.pause();
+
+            // Sorteia a frase
+            const sorteio = frases[Math.floor(Math.random() * frases.length)];
+            document.getElementById("resultado").textContent = sorteio;
+
+        }, 3000); // 3000 ms = 3 segundos
+    }
 </script>
+
+    
+<h1><div id="resultado"></div></h1>
+
+
+
+
+
 </body>
 </html>
